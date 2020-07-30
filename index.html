@@ -4,30 +4,76 @@
 <meta charset="UTF-8">
 
 <head>
-    <title>Plataforma Web picudo del chile en Sinaloa</title>
+    <title>Ecobici y Wifi: geoprocesos</title>
+    <!-- Go to https://code.jquery.com/ for more details -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
         crossorigin=""></script>
+
+
 </head>
 
 <body>
+    <table>
+        <tr>
+            <td><img src="./docs/images/ecobici-logo.png" height="100" width="200"></td>
+            <td><img src="./docs/images/wifi-logo.png" height="100" width="120"></td>
+        </tr>
+    <hr>
+    <table cellspacing="5">
+        <tr>
+            <td><button id="consulta_1">Consulta 1</button></td>
+        </tr>
+    </table>
+    
+    <button id="consulta_1">Consulta 1</button>
+    <hr>
 
-    <div id="mapid" style="width: 600px; height: 400px;"></div>
+    <div id="mapid" style="width: 800px; height: 500px;"></div>
     <script>
 
-        var mymap = L.map('mapid').setView([24.66305, -107.6229], 10);
+        var myMap = L.map('mapid').setView([24.66305, -107.6229], 9);
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            attribution: 'Map data & copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
                 '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
                 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             id: 'mapbox.streets'
-        }).addTo(mymap);
+        }).addTo(myMap);
 
     </script>
+    
+    <!-- Inicio Consulta 1 -->
+    <script>
+        let debugData;
+        $(document).ready(() => {
 
+            $('#consulta_1').click(() => {
+
+                $.getJSON(
+                    'http://localhost:8000/getQ1',
+
+                    function (json) {
+                        debugData = json;//usamos esta linea para facilitar las labores de inpeccion de datos, pero no se recomienda dejarlo para produccion
+                        if (json) {
+                            L.geoJson(json).addTo(myMap);
+                        }
+                    });
+            })
+        })
+    </script>
+    <!-- Fin Consulta 1 -->
+    
 </body>
 
 </html>
