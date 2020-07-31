@@ -73,25 +73,35 @@
                 $.getJSON(
                     'http://localhost:8000/getQ1',
 
-                    function (json) {   
-                        
+                    function (json) {
+
                         if (json) {
+                            var geojsonMarkerOptions = {
+                                radius: 6,
+                                fillColor: "#ff7800",
+                                color: "#000",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1.0
+                            };
                             L.geoJson(json, {
                                 pointToLayer: function (feature, latlng) {
-                                    var marker = L.marker(latlng);
-                                    marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' + 
-                                    "Ubicación: " + feature.properties.ubicacion + '<br/>' + 
-                                    "Longitud: " + feature.properties.longitud + '<br/>' + 
-                                    "Latitud: " + feature.properties.latitud + '<br/>' + 
-                                    "No de trampa: " + feature.properties.no_trampa + '<br/>' + 
-                                    "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                                    var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                                    marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
+                                        "Ubicación: " + feature.properties.ubicacion + '<br/>' +
+                                        "Longitud: " + feature.properties.longitud + '<br/>' +
+                                        "Latitud: " + feature.properties.latitud + '<br/>' +
+                                        "No de trampa: " + feature.properties.no_trampa + '<br/>' +
+                                        "Trampa ID: " + feature.properties.trampa_id + '<br/>');
                                     return marker;
                                 }
                             }).addTo(myMap);
+                            
                         }
                     });
             })
         })
+
     </script>
     <!-- Fin Consulta 1 -->
 
