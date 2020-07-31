@@ -49,6 +49,14 @@
         </tr>
     </table>
 
+    <div id="controls">
+        <table cellspacing="5">
+            <tr>
+                <td><button id="mostrar_trampas">Mostrar todas las trampas</button></td>
+            </tr>
+        </table>
+    </div>
+
     <script>
 
         var myMap = L.map('mapid').setView([24.66305, -107.6229], 9);
@@ -68,7 +76,8 @@
         let debugData;
         $(document).ready(() => {
 
-            $('#consulta').click(() => {
+            // Muestra todas las trampas
+            $('#mostrar_trampas').click(() => {
 
                 $.getJSON(
                     'http://localhost:8000/getQ1',
