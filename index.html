@@ -23,13 +23,6 @@
 </head>
 
 <body>
-    <table cellspacing="5">
-        <tr>
-            <td><button id="consulta">Trampas</button></td>
-        </tr>
-    </table>
-    <hr>
-
     <table>
         <tr>
             <td>
@@ -55,6 +48,7 @@
         <table cellspacing="5">
             <tr>
                 <td><button id="mostrar_trampas">Mostrar todas las trampas</button></td>
+                <td><button id="quitar_trampas">Quitar todas las trampas</button></td>
             </tr>
         </table>
     </div>
@@ -71,61 +65,63 @@
             id: 'mapbox.streets'
         }).addTo(myMap);
 
-    </script>
+        // Muestra todas las trampas
+        document.getElementById("mostrar_trampas").addEventListener("click", muestraTrampas);
 
-    <!-- Inicio Consulta 1 -->
-    <script>
-        let debugData;
-        $(document).ready(() => {
+        function muestraTrampas() {
+            var todas_trampas = true
+            
+            $.getJSON(
+                'http://localhost:8000/mostrarTrampas',
 
-            // Muestra todas las trampas
-            $('#mostrar_trampas').click(() => {
+                function (json) {
 
-                $.getJSON(
-                    'http://localhost:8000/getQ1',
+                    L.geoJson(json, {
+                        pointToLayer: function (feature, latlng) {
 
-                    function (json) {
+                            var geojsonMarkerOptions = {
+                                radius: 6,
+                                fillColor: getColor(feature.properties.trampa_id),
+                                color: "#000",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1.0
+                            };
 
-                        if (json) {
+                            function getColor(d) {
+                                if (d <= 20)
+                                    return "#000";
+                                if (d > 20 & d <= 40)
+                                    return "#FF5733";
+                                if (d > 40 & d <= 60)
+                                    return "#81FF33";
+                                if (d > 60)
+                                    return "#3357FF";
+                            };
 
-                            L.geoJson(json, {
-                                pointToLayer: function (feature, latlng) {
-
-                                    var geojsonMarkerOptions = {
-                                        radius: 6,
-                                        fillColor: getColor(feature.properties.trampa_id),
-                                        color: "#000",
-                                        weight: 1,
-                                        opacity: 1,
-                                        fillOpacity: 1.0
-                                    };
-
-                                    function getColor(d) {
-                                        if (d <= 20)
-                                            return "#000";
-                                        if (d > 20 & d <= 40)
-                                            return "#FF5733";
-                                        if (d > 40 & d <= 60)
-                                            return "#81FF33";
-                                        if (d > 60)
-                                            return "#3357FF";
-                                    };
-
-                                    var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-                                    marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
-                                        "Ubicación: " + feature.properties.ubicacion + '<br/>' +
-                                        "Longitud: " + feature.properties.longitud + '<br/>' +
-                                        "Latitud: " + feature.properties.latitud + '<br/>' +
-                                        "No de trampa: " + feature.properties.no_trampa + '<br/>' +
-                                        "Trampa ID: " + feature.properties.trampa_id + '<br/>');
-                                    return marker;
-                                }
-                            }).addTo(myMap);
-
+                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
+                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
+                                "Longitud: " + feature.properties.longitud + '<br/>' +
+                                "Latitud: " + feature.properties.latitud + '<br/>' +
+                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
+                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                            return marker;
                         }
-                    });
-            })
-        })
+                    }).addTo(myMap);
+
+                });
+                
+                return todas_trampas
+                console.log(todas_trampas)
+        }
+
+        // Muestra trampas de Campo Laguna
+        document.getElementById("quitar_trampas").addEventListener("click", quita_trampas);
+
+        function quita_trampas() {
+            console.log(todas_trampas)
+        };
 
     </script>
     <!-- Fin Consulta 1 -->
