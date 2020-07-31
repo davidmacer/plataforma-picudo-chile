@@ -76,16 +76,30 @@
                     function (json) {
 
                         if (json) {
-                            var geojsonMarkerOptions = {
-                                radius: 6,
-                                fillColor: "#ff7800",
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1.0
-                            };
+
                             L.geoJson(json, {
                                 pointToLayer: function (feature, latlng) {
+
+                                    var geojsonMarkerOptions = {
+                                        radius: 6,
+                                        fillColor: getColor(feature.properties.trampa_id),
+                                        color: "#000",
+                                        weight: 1,
+                                        opacity: 1,
+                                        fillOpacity: 1.0
+                                    };
+
+                                    function getColor(d) {
+                                        if (d <= 20)
+                                            return "#000";
+                                        if (d > 20 & d <= 40)
+                                            return "#FF5733";
+                                        if (d > 40 & d <= 60)
+                                            return "#81FF33";
+                                        if (d > 60)
+                                            return "#3357FF";
+                                    };
+
                                     var marker = L.circleMarker(latlng, geojsonMarkerOptions);
                                     marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
                                         "Ubicación: " + feature.properties.ubicacion + '<br/>' +
@@ -96,7 +110,7 @@
                                     return marker;
                                 }
                             }).addTo(myMap);
-                            
+
                         }
                     });
             })
