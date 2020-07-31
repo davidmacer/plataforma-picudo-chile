@@ -32,21 +32,23 @@
 
     <table>
         <tr>
-            <td><div id="mapid" style="width: 1000px; height: 600px;"></div></td>
             <td>
-                    <h3>Variables ambientales</h3>
+                <div id="mapid" style="width: 1000px; height: 600px;"></div>
+            </td>
+            <td>
+                <h3>Variables ambientales</h3>
 
-                    <FORM METHOD=post ACTION="">
+                <FORM METHOD=post ACTION="">
                     <p>Mes: <input name="name" size="20"> </br></p>
                     <p>Temperatura máxima: <input name="tmax" type=int></p>
                     <p>Temperatura mínima: <input name="tmin" type=int></p>
                     <p>Precipitación: <input name="pr" type=int></p>
                     <INPUT TYPE=SUBMIT> <INPUT TYPE=RESET>
-                    </FORM>
+                </FORM>
             </td>
         </tr>
     </table>
-    
+
     <script>
 
         var myMap = L.map('mapid').setView([24.66305, -107.6229], 9);
@@ -60,7 +62,7 @@
         }).addTo(myMap);
 
     </script>
-    
+
     <!-- Inicio Consulta 1 -->
     <script>
         let debugData;
@@ -71,17 +73,28 @@
                 $.getJSON(
                     'http://localhost:8000/getQ1',
 
-                    function (json) {
-                        debugData = json;//usamos esta linea para facilitar las labores de inpeccion de datos, pero no se recomienda dejarlo para produccion
+                    function (json) {   
+                        
                         if (json) {
-                            L.geoJson(json).addTo(myMap);
+                            L.geoJson(json, {
+                                pointToLayer: function (feature, latlng) {
+                                    var marker = L.marker(latlng);
+                                    marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' + 
+                                    "Ubicación: " + feature.properties.ubicacion + '<br/>' + 
+                                    "Longitud: " + feature.properties.longitud + '<br/>' + 
+                                    "Latitud: " + feature.properties.latitud + '<br/>' + 
+                                    "No de trampa: " + feature.properties.no_trampa + '<br/>' + 
+                                    "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                                    return marker;
+                                }
+                            }).addTo(myMap);
                         }
                     });
             })
         })
     </script>
     <!-- Fin Consulta 1 -->
-    
+
 </body>
 
 </html>
