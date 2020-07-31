@@ -15,13 +15,13 @@ const connection = {
 
 const db = pgp(connection);
 
-async function getQ1(ctx) {
+async function mostrarTrampas(ctx) {
 
     var parametros = ctx.request.query;//el query como un objeto
 
     //ejemplo de consulta falsa a la DB , pero funcional
-    let sqlquery = `select st_asgeojson (geom), no_trampa, ubicacion, longitud, latitud 
-    from historico_monitoreo LIMIT 500;`;
+    let sqlquery = `SELECT st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id
+    FROM tabla_trampas;`;
     let sqlReplacements = {};
     let resultados = await db.any(sqlquery, sqlReplacements);//esperamos los resultados de la consulta con await
     //console.log(results);
@@ -50,11 +50,12 @@ async function getQ1(ctx) {
             "geometry": JSON.parse(resultado_i.st_asgeojson),
             "geometry_name": "geom",
             "properties": {
-                "id": resultado_i.id,  //<= muevanle aqui
-                "No de trampa": resultado_i.no_trampa,
-                "Ubicación": resultado_i.ubicacion,
-                "Longitud": resultado_i.longitud,
-                "Latitud": resultado_i.latitud
+                "trampa_id": resultado_i.trampa_id,  //<= muevanle aqui
+                "no_trampa": resultado_i.no_trampa,
+                "localidad": resultado_i.localidad,
+                "ubicacion": resultado_i.ubicacion,
+                "longitud": resultado_i.longitud,
+                "latitud": resultado_i.latitud
 
             }
         };
@@ -82,7 +83,7 @@ class SimplePotreeServer {
         const endpoints = [
 
             //The Server listens for requests on 
-            router.get('/getQ1', getQ1),//devuelve un listado de nubes
+            router.get('/mostrarTrampas', mostrarTrampas),//devuelve un listado de nubes
 
         ];
         return endpoints;
