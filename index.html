@@ -73,30 +73,146 @@
         document.getElementById("mostrar_campo_laguna").addEventListener("click", muestraCampoLaguna);
 
         function muestraCampoLaguna() {
-            
+
+            $.getJSON(
+                'http://localhost:8000/mostrarCampoLaguna',
+
+                function (json) {
+
+                    L.geoJson(json, {
+                        pointToLayer: function (feature, latlng) {
+
+                            var geojsonMarkerOptions = {
+                                radius: 6,
+                                fillColor: getColor(feature.properties.trampa_id),
+                                color: "#004C99",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1.0
+                            };
+
+                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
+                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
+                                "Longitud: " + feature.properties.longitud + '<br/>' +
+                                "Latitud: " + feature.properties.latitud + '<br/>' +
+                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
+                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                            return marker;
+                        }
+                    }).addTo(myMap);
+
+                });
         };
-        
+
         // Muestra trampas de Culiacán
         document.getElementById("mostrar_culiacan").addEventListener("click", muestraCuliacan);
 
         function muestraCuliacan() {
-            
+
+            $.getJSON(
+                'http://localhost:8000/mostrarCuliacan',
+
+                function (json) {
+
+                    L.geoJson(json, {
+                        pointToLayer: function (feature, latlng) {
+
+                            var geojsonMarkerOptions = {
+                                radius: 6,
+                                fillColor: getColor(feature.properties.trampa_id),
+                                color: "#004C99",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1.0
+                            };
+
+                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
+                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
+                                "Longitud: " + feature.properties.longitud + '<br/>' +
+                                "Latitud: " + feature.properties.latitud + '<br/>' +
+                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
+                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                            return marker;
+                        }
+                    }).addTo(myMap);
+
+                });
         };
 
         // Muestra trampas de Navolato Norte
         document.getElementById("mostrar_nav_norte").addEventListener("click", muestraNavNorte);
 
         function muestraNavNorte() {
-            
+
+            $.getJSON(
+                'http://localhost:8000/mostrarNavNorte',
+
+                function (json) {
+
+                    L.geoJson(json, {
+                        pointToLayer: function (feature, latlng) {
+
+                            var geojsonMarkerOptions = {
+                                radius: 6,
+                                fillColor: getColor(feature.properties.trampa_id),
+                                color: "#004C99",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1.0
+                            };
+
+                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
+                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
+                                "Longitud: " + feature.properties.longitud + '<br/>' +
+                                "Latitud: " + feature.properties.latitud + '<br/>' +
+                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
+                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                            return marker;
+                        }
+                    }).addTo(myMap);
+
+                });
         };
 
-        // Muestra trampas de Navolato Norte
+        // Muestra trampas de Tamarindo
         document.getElementById("mostrar_tamarindo").addEventListener("click", muestraTamarindo);
 
         function muestraTamarindo() {
-            
+
+            $.getJSON(
+                'http://localhost:8000/mostrarTamarindo',
+
+                function (json) {
+
+                    L.geoJson(json, {
+                        pointToLayer: function (feature, latlng) {
+
+                            var geojsonMarkerOptions = {
+                                radius: 6,
+                                fillColor: getColor(feature.properties.trampa_id),
+                                color: "#004C99",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1.0
+                            };
+
+                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
+                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
+                                "Longitud: " + feature.properties.longitud + '<br/>' +
+                                "Latitud: " + feature.properties.latitud + '<br/>' +
+                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
+                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                            return marker;
+                        }
+                    }).addTo(myMap);
+
+                });
         };
-        
+
         // Muestra todas las trampas
         document.getElementById("mostrar_trampas").addEventListener("click", muestraTrampas);
 
