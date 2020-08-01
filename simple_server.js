@@ -306,8 +306,8 @@ class SimplePotreeServer {
             router.get('/mostrarTrampas', mostrarTrampas), // devuelve un listado de nubes
             router.get('/mostrarCampoLaguna', mostrarCampoLaguna), // devuelve un listado de nubes
             router.get('/mostrarCuliacan', mostrarCuliacan), // devuelve un listado de nubes
-            router.get('/mostrarCuliacan', mostrarNavNorte), // devuelve un listado de nubes
-            router.get('/mostrarCuliacan', mostrarTamarindo), // devuelve un listado de nubes
+            router.get('/mostrarNavNorte', mostrarNavNorte), // devuelve un listado de nubes
+            router.get('/mostrarTamarindo', mostrarTamarindo), // devuelve un listado de nubes
         ];
         return endpoints;
     }
