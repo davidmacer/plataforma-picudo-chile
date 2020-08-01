@@ -17,6 +17,8 @@
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
         crossorigin=""></script>
+        <!-- Mis archivos -->
+    <script src="js/form_variables_ambientales.js"></script>
 
 
 </head>
@@ -31,13 +33,26 @@
                 <div id="formulario">
                     <h3>Variables ambientales</h3>
 
-                    <FORM METHOD=post ACTION="">
-                        <p>Mes: <input name="name" size="20"> </br></p>
+                    <form action="#" method="post" id="envio_post">
+                        <select name="mes" id="mes">
+                            <option value="ene">Enero</option>
+                            <option value="feb">Febrero</option>
+                            <option value="mar">Marzo</option>
+                            <option value="abr">Abril</option>
+                            <option value="may">Mayo</option>
+                            <option value="jun">Junio</option>
+                            <option value="jun">Julio</option>
+                            <option value="jun">Agosto</option>
+                            <option value="jun">Septiembre</option>
+                            <option value="jun">Octubre</option>
+                            <option value="jun">Noviembre</option>
+                            <option value="jun">Diciembre</option>
+                        </select> </br>
                         <p>Temperatura máxima: <input name="tmax" type=int></p>
                         <p>Temperatura mínima: <input name="tmin" type=int></p>
                         <p>Precipitación: <input name="pr" type=int></p>
-                        <INPUT TYPE=SUBMIT> <INPUT TYPE=RESET>
-                    </FORM>
+                        <input id="submit" type="button" value="submit"> <input type="reset">
+                    </form>
                 </div>
             </td>
         </tr>
