@@ -47,6 +47,10 @@
     <div id="controls">
         <table cellspacing="5">
             <tr>
+                <td><button id="mostrar_campo_laguna">Campo Laguna</button></td>
+                <td><button id="mostrar_culiacan">Culiacán</button></td>
+                <td><button id="mostrar_nav_norte">Navolato Norte</button></td>
+                <td><button id="mostrar_tamarindo">Tamarindo</button></td>
                 <td><button id="mostrar_trampas">Mostrar todas las trampas</button></td>
                 <td><button id="quitar_trampas">Quitar todas las trampas</button></td>
             </tr>
@@ -65,12 +69,40 @@
             id: 'mapbox.streets'
         }).addTo(myMap);
 
+        // Muestra trampas de Campo Laguna
+        document.getElementById("mostrar_campo_laguna").addEventListener("click", muestraCampoLaguna);
+
+        function muestraCampoLaguna() {
+            
+        };
+        
+        // Muestra trampas de Culiacán
+        document.getElementById("mostrar_culiacan").addEventListener("click", muestraCuliacan);
+
+        function muestraCuliacan() {
+            
+        };
+
+        // Muestra trampas de Navolato Norte
+        document.getElementById("mostrar_nav_norte").addEventListener("click", muestraNavNorte);
+
+        function muestraNavNorte() {
+            
+        };
+
+        // Muestra trampas de Navolato Norte
+        document.getElementById("mostrar_tamarindo").addEventListener("click", muestraTamarindo);
+
+        function muestraTamarindo() {
+            
+        };
+        
         // Muestra todas las trampas
         document.getElementById("mostrar_trampas").addEventListener("click", muestraTrampas);
 
         function muestraTrampas() {
             var todas_trampas = true
-            
+
             $.getJSON(
                 'http://localhost:8000/mostrarTrampas',
 
@@ -111,9 +143,6 @@
                     }).addTo(myMap);
 
                 });
-                
-                return todas_trampas
-                console.log(todas_trampas)
         }
 
         // Muestra trampas de Campo Laguna
