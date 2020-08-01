@@ -1,20 +1,24 @@
-<?php 
+<?php
+// Agrega el header para dar acceso al servidor en el puerto 8000 porque este archivo no está en este puerto
+header("Access-Control-Allow-Origin: http://localhost:8000");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+
 // Abre una conexion al servidor de pgsql
 $connection=pg_connect ("host=localhost dbname=db_picudo_chile port=5432 user=postgres password=postgres");
-// if (!$connection) {
-//     echo "No establecí contacto con la BD"
-// }
+if (!$connection) {
+  die("No se ha podido establecer conexion con la bd.  ");
+  exit;
+}
 
-$mes = $_POST['mes'];
+// $mes = $_POST['mes'];
+// echo $mes;
 // $tmax = $_POST['tmax'];
 // $tmin = $_POST['tmax'];
 // $precip = $_POST['pr'];
 
 // Genera la consulta a la base de datos
-$query = "SELECT st_asgeojson(geom), st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id
-FROM tabla_trampas";
-
-echo $query;
+$query = "SELECT st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id FROM tabla_trampas;";
 
 $result = pg_query($query);
 
@@ -22,12 +26,14 @@ if (!$result) {
   die("Invalid query: " . pg_error());
 }
 
-// $data = array();
-// // Itera por los renglones
-// while ($row = @pg_fetch_assoc($result)){ 
-//   $renglon = array("nombre"=>$row['nombre'],"tipo"=>$row['tipo'],"delmun"=>$row['delmun'],"entidad"=>$row['entidad'],"sector"=>$row['sector'],"rama"=>$row['rama'],"clase"=>$row['clase']);
-//   array_push($data,$renglon);
-// }
-//     //returns data as JSON format
-//     echo json_encode($data);
+$data = array();
+// Itera por los renglones
+while ($row = @pg_fetch_assoc($result)){ 
+  $renglon = array("no_trampa"=>$row['no_trampa'],"localidad"=>$row['localidad'],
+  "ubicacion"=>$row['ubicacion'],"longitud"=>$row['longitud'],
+  "latitud"=>$row['latitud']);
+  array_push($data,$renglon);
+}
+    //returns data as JSON format
+    echo json_encode($data);
 ?>
