@@ -71,6 +71,62 @@ async function mostrarTrampas(ctx) {
 
 }//end getREsults
 
+// mostrarCampoLaguna
+async function mostrarCampoLaguna(ctx) {
+
+    var parametros = ctx.request.query;//el query como un objeto
+
+    //ejemplo de consulta falsa a la DB , pero funcional
+    let sqlquery = `SELECT st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id
+    FROM tabla_trampas
+    WHERE localidad = 'Campo Laguna';`;
+    let sqlReplacements = {};
+    let resultados = await db.any(sqlquery, sqlReplacements);//esperamos los resultados de la consulta con await
+    //console.log(results);
+
+    //plantilla de objeto geoJSON, la cual debe ser unica para cada peticion
+    let geoJSONResult = {
+        "type": "FeatureCollection",
+        "totalFeatures": 0,  //este valor se debe actualizar
+        "features": [],//aqui es donde se colocan los rasgos
+        "crs": {
+            "type": "name",
+            "properties": {
+                "name": "urn:ogc:def:crs:EPSG::4326"//habra que modificarlo conforme a las respuestas
+            }
+        }
+    };
+
+    //iteramos sobre el arreglo de respuestas o results, es decir, para cada resultado_i ejecutamos una pieza de codigo que crea un feature
+    resultados.forEach(function (resultado_i) {
+        //creamos una plantilla para cada feature
+        //los properties son especificas de cada fila.
+        //aunque hay manera de automatizar los properties que se agregan, eso queda fuera del alcance de la practica, sorry =(
+        let feature = {
+            "type": "Feature",
+            "id": resultado_i.id,
+            "geometry": JSON.parse(resultado_i.st_asgeojson),
+            "geometry_name": "geom",
+            "properties": {
+                "trampa_id": resultado_i.trampa_id,  //<= muevanle aqui
+                "no_trampa": resultado_i.no_trampa,
+                "localidad": resultado_i.localidad,
+                "ubicacion": resultado_i.ubicacion,
+                "longitud": resultado_i.longitud,
+                "latitud": resultado_i.latitud
+            }
+        };
+        geoJSONResult.features.push(feature);//agregamos el feature al arreglo numFeatures
+    });
+
+    //un poco de cortesia al programador
+    console.log("Registros devueltos: " + geoJSONResult.features.length);
+    geoJSONResult.totalFeatures = geoJSONResult.features.length;//actualizando el numero de registros de GeoJSON
+    ctx.body = geoJSONResult;//devolviendo los resultados.
+
+}
+//end mostrarCampoLaguna
+
 class SimplePotreeServer {
 
     constructor() {
@@ -84,7 +140,7 @@ class SimplePotreeServer {
 
             //The Server listens for requests on 
             router.get('/mostrarTrampas', mostrarTrampas),//devuelve un listado de nubes
-
+            router.get('/mostrarCampoLaguna', mostrarCampoLaguna),//devuelve un listado de nubes
         ];
         return endpoints;
     }
