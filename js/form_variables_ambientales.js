@@ -8,7 +8,7 @@ $(document).ready(function () {
         var tipo = $('#mes option:selected').html();
 
         // Elementos del formulario a enviar 
-        var dataString = 'tipo = ' + tipo;
+        var dataString = 'tipo=' + tipo;
 
         /*
             La llamada AJAX_POST se construye mediante JQuery, a través de la cual se pasa la URL y una función de éxito ... y otras más
