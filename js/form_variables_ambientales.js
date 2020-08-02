@@ -32,13 +32,13 @@ $(document).ready(function () {
                 if (response.length > 0) {
                     console.log("Estoy corriendo en la línea 33")
                     //Itera sobre los valores obtenidos
-                    // for (var i in response) {
-                    //     contenido_html = "Nombre: " + response[i].nombre + "<br/>";
-                    //     contenido_html += "Tipo: " + response[i].tipo + "<br/>";
-                    //     contenido_html += "Municipio: " + response[i].delmun + "<br/>";
-                    //     contenido_html += "<hr/>";
-                    //     $('#contenido').append(contenido_html);
-                    // } //fin del for
+                    for (var i in response) {
+                        contenido_html = "Zona: " + response[i].localidad + "<br/>";
+                        contenido_html += "Ubicación: " + response[i].ubicacion + "<br/>";
+                        contenido_html += "No de trampa: " + response[i].no_trampa + "<br/>";
+                        contenido_html += "<hr/>";
+                        $('#contenido').append(contenido_html);
+                    } //fin del for
                 } else {
                     console.log("Estoy corriendo en la línea 43")
                     contenido_html = "La consulta no tiene resultados" + "<br/>";
