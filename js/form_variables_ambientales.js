@@ -5,7 +5,7 @@ $(document).ready(function () {
         */
         var URL = 'http://localhost/form_variables_ambientales.php';
         var contenido_html = "";
-        var tipo = $('#tipo option:selected').html();
+        var tipo = $('#mes option:selected').html();
 
         // Elementos del formulario a enviar 
         var dataString = 'tipo = ' + tipo;
