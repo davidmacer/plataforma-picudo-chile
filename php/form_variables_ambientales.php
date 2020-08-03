@@ -1,4 +1,5 @@
 <?php
+
 // Agrega el header para dar acceso al servidor en el puerto 8000 porque este archivo no está en este puerto
 header("Access-Control-Allow-Origin: http://localhost:8000");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -29,9 +30,9 @@ if (!$result) {
 $data = array();
 // Itera por los renglones
 while ($row = @pg_fetch_assoc($result)){ 
-  $renglon = array("no_trampa"=>$row['no_trampa'],"localidad"=>$row['localidad'],
-  "ubicacion"=>$row['ubicacion'],"longitud"=>$row['longitud'],
-  "latitud"=>$row['latitud']);
+  $renglon = array("no_trampa"=>$row['no_trampa'], "localidad"=>$row['localidad'], 
+  "ubicacion"=>$row['ubicacion'], "longitud"=>$row['longitud'], "latitud"=>$row['latitud'], 
+  "mes"=>$mes);
   array_push($data,$renglon);
 }
     //returns data as JSON format
