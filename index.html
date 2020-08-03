@@ -33,7 +33,7 @@
                 <div id="formulario">
                     <h3>Variables ambientales</h3>
 
-                    <form action="#" method="post" id="form_variables_ambientales.php">
+                    <form action="form_variables_ambientales.php" method="post">
                         <select name="mes" id="mes">
                             <option value="ene">Enero</option>
                             <option value="feb">Febrero</option>
@@ -48,10 +48,10 @@
                             <option value="jun">Noviembre</option>
                             <option value="jun">Diciembre</option>
                         </select>
-                        <input id="submit" type="button" value="Submit"> <input type="reset">
-                        <p>Temperatura mínima: <input name="tmin" type=int></p>
-                        <p>Precipitación: <input name="pr" type=int></p>
-                        <input id="submit" type="button" value="submit"> <input type="reset">
+                        <p>Temperatura mínima: <input type="number" id="tmin" name="tmin" value="12"></p>
+                        <p>Temperatura máxima: <input type="number" id="tmax" name="tmax" value="28"></p>
+                        <p>Precipitación: <input type="number" id="precip" name="precip" value="0"></p>
+                        <input id="submit" type="submit" value="Submit"> <input type="reset">
                     </form>
                 </div>
             </td>
@@ -72,7 +72,7 @@
     </div>
 
     <span id="contenido"></span>
-    
+
     <script>
 
         var myMap = L.map('mapid').setView([24.66305, -107.6229], 9);

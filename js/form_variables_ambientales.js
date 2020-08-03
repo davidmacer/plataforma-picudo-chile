@@ -7,12 +7,13 @@ $(document).ready(function () {
         var URL = 'http://localhost/form_variables_ambientales.php';
         var contenido_html = "";
         var mes = $('#mes option:selected').html();
-        // var tmin = $('#tmin option:selected').html();
-
+        var tmin = $('#tmin').val();
+        var tmax = $('#tmax').val();
+        var precip = $('#precip').val();
+        
         // Elementos del formulario a enviar 
-        var dataString = 'mes=' + mes;
-        console.log(dataString)
-
+        var dataString = {"mes":mes, "tmin":tmin, "tmax":tmax, "precip":precip};
+        
 		/*
 			La llamada AJAX_POST se construye mediante JQuery, a través de la cual se pasa la URL y una función de éxito ... y otras más
 			AJAX (JavaScript Asíncrono y XML) nos proporciona la posibilidad de hacer peticiones al servidor  (intercambiar datos) 
@@ -39,6 +40,9 @@ $(document).ready(function () {
                         contenido_html += "Ubicación: " + response[i].ubicacion + "<br/>";
                         contenido_html += "No de trampa: " + response[i].no_trampa + "<br/>";
                         contenido_html += "Mes: " + response[i].mes + "<br/>";
+                        contenido_html += "Temperatura mínima: " + response[i].tmin + "<br/>";
+                        contenido_html += "Temperatura máxima: " + response[i].tmax + "<br/>";
+                        contenido_html += "Precipitación: " + response[i].precip + "<br/>";
                         contenido_html += "<hr/>";
                         $('#contenido').append(contenido_html);
                     } //fin del for

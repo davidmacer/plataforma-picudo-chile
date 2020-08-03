@@ -12,11 +12,11 @@ if (!$connection) {
   exit;
 }
 
-// $mes = $_POST['mes'];
-// echo $mes;
-// $tmax = $_POST['tmax'];
-// $tmin = $_POST['tmax'];
-// $precip = $_POST['pr'];
+$mes = $tmin = "";
+$mes = $_POST['mes'];
+$tmin = $_POST['tmin'];
+$tmax = $_POST['tmax'];
+$precip = $_POST['precip'];
 
 // Genera la consulta a la base de datos
 $query = "SELECT st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id FROM tabla_trampas;";
@@ -32,8 +32,8 @@ $data = array();
 while ($row = @pg_fetch_assoc($result)){ 
   $renglon = array("no_trampa"=>$row['no_trampa'], "localidad"=>$row['localidad'], 
   "ubicacion"=>$row['ubicacion'], "longitud"=>$row['longitud'], "latitud"=>$row['latitud'], 
-  "mes"=>$mes);
-  array_push($data,$renglon);
+  "mes"=>$mes, "tmin"=>$tmin, "tmax"=>$tmax, "precip"=>$precip);
+  array_push($data, $renglon);
 }
     //returns data as JSON format
     echo json_encode($data);
