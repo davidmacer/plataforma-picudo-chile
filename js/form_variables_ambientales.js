@@ -10,10 +10,10 @@ $(document).ready(function () {
         var tmin = $('#tmin').val();
         var tmax = $('#tmax').val();
         var precip = $('#precip').val();
-        
+
         // Elementos del formulario a enviar 
         var dataString = {"mes":mes, "tmin":tmin, "tmax":tmax, "precip":precip};
-        
+
 		/*
 			La llamada AJAX_POST se construye mediante JQuery, a través de la cual se pasa la URL y una función de éxito ... y otras más
 			AJAX (JavaScript Asíncrono y XML) nos proporciona la posibilidad de hacer peticiones al servidor  (intercambiar datos) 
@@ -82,6 +82,29 @@ $(document).ready(function () {
                         //revisar https://www.w3schools.com/jsref/jsref_push.asp para mas informacion de push()
                         geoJSONResult.features.push(feature);//agregamos el feature al arreglo numFeatures
                     });
+
+                    // Agrega al mapa los registros obtenidos
+                    L.geoJson(geoJSONResult, {
+                        pointToLayer: function (feature, latlng) {
+
+                            var geojsonMarkerOptions = {
+                                radius: 6,
+                                color: "#FF0000",
+                                weight: 1,
+                                opacity: 1,
+                                fillOpacity: 1.0
+                            };
+
+                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
+                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
+                                "Longitud: " + feature.properties.longitud + '<br/>' +
+                                "Latitud: " + feature.properties.latitud + '<br/>' +
+                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
+                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                            return marker;
+                        }
+                    }).addTo(myMap);
 
                 } else {
                     contenido_html = "La consulta no tiene resultados" + "<br/>";
