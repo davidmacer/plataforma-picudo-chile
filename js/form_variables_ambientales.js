@@ -46,6 +46,43 @@ $(document).ready(function () {
                         contenido_html += "<hr/>";
                         $('#contenido').append(contenido_html);
                     } //fin del for
+
+                    let geoJSONResult = {
+                        "type": "FeatureCollection",
+                        "totalFeatures": 0,  //este valor se debe actualizar
+                        "features": [],//aqui es donde se colocan los rasgos
+                        "crs": {
+                            "type": "name",
+                            "properties": {
+                                "name": "urn:ogc:def:crs:EPSG::4326"//habra que modificarlo conforme a las respuestas
+                            }
+                        }
+                    };
+
+                    response.forEach(function (resultado_i) {
+                        //creamos una plantilla para cada feature
+                        //los properties son especificas de cada fila.
+                        //aunque hay manera de automatizar los properties que se agregan, eso queda fuera del alcance de la practica, sorry =(
+                        let feature = {
+                            "type": "Feature",
+                            "id": resultado_i.id,
+                            "geometry": JSON.parse(resultado_i.st_asgeojson),
+                            "geometry_name": "geom",
+                            "properties": {
+                                "trampa_id": resultado_i.trampa_id,  //<= muevanle aqui
+                                "no_trampa": resultado_i.no_trampa,
+                                "localidad": resultado_i.localidad,
+                                "ubicacion": resultado_i.ubicacion,
+                                "longitud": resultado_i.longitud,
+                                "latitud": resultado_i.latitud
+
+                            }
+                        };
+                        // console.log(JSON.stringify(feature));//por si quisiera ver el contenido de cada iteracion
+                        //revisar https://www.w3schools.com/jsref/jsref_push.asp para mas informacion de push()
+                        geoJSONResult.features.push(feature);//agregamos el feature al arreglo numFeatures
+                    });
+
                 } else {
                     contenido_html = "La consulta no tiene resultados" + "<br/>";
                     $('#contenido').append(contenido_html);
