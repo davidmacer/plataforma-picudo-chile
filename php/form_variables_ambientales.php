@@ -19,7 +19,8 @@ $tmax = $_POST['tmax'];
 $precip = $_POST['precip'];
 
 // Genera la consulta a la base de datos
-$query = "SELECT st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id FROM tabla_trampas;";
+$query = "SELECT st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id FROM tabla_trampas
+WHERE localidad = 'Culiacán' OR localidad = 'Campo Laguna' OR localidad = 'Tamarindo';";
 
 $result = pg_query($query);
 
