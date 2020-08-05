@@ -31,8 +31,8 @@ if (!$result) {
 $data = array();
 // Itera por los renglones
 while ($row = @pg_fetch_assoc($result)){ 
-  $renglon = array("no_trampa"=>$row['no_trampa'], "localidad"=>$row['localidad'], 
-  "ubicacion"=>$row['ubicacion'], "longitud"=>$row['longitud'], "latitud"=>$row['latitud'], 
+  $renglon = array("st_asgeojson"=>$row['st_asgeojson'], "no_trampa"=>$row['no_trampa'], "localidad"=>$row['localidad'], 
+  "ubicacion"=>$row['ubicacion'], "longitud"=>$row['longitud'], "latitud"=>$row['latitud'], "trampa_id"=>$row['trampa_id'],  
   "mes"=>$mes, "tmin"=>$tmin, "tmax"=>$tmax, "precip"=>$precip);
   array_push($data, $renglon);
 }
