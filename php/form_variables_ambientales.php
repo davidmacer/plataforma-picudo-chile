@@ -12,7 +12,7 @@ if (!$connection) {
   exit;
 }
 
-$mes = $tmin = $tmax = $precip = "";
+$mes = $tmin = $tmax = $precip = $riesgo = "";
 $mes = $_POST['mes'];
 $tmin = $_POST['tmin'];
 $tmax = $_POST['tmax'];
@@ -33,7 +33,7 @@ $data = array();
 while ($row = @pg_fetch_assoc($result)){ 
   $renglon = array("st_asgeojson"=>$row['st_asgeojson'], "no_trampa"=>$row['no_trampa'], "localidad"=>$row['localidad'], 
   "ubicacion"=>$row['ubicacion'], "longitud"=>$row['longitud'], "latitud"=>$row['latitud'], "trampa_id"=>$row['trampa_id'],  
-  "mes"=>$mes, "tmin"=>$tmin, "tmax"=>$tmax, "precip"=>$precip);
+  "mes"=>$mes, "tmin"=>$tmin, "tmax"=>$tmax, "precip"=>$precip, "riesgo"=>$riesgo);
   array_push($data, $renglon);
 }
     //returns data as JSON format
