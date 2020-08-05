@@ -12,7 +12,7 @@ if (!$connection) {
   exit;
 }
 
-$mes = $tmin = "";
+$mes = $tmin = $tmax = $precip = "";
 $mes = $_POST['mes'];
 $tmin = $_POST['tmin'];
 $tmax = $_POST['tmax'];
