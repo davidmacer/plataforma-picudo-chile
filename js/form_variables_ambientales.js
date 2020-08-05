@@ -98,6 +98,44 @@ $(document).ready(function () {
                                 }
                                 else {
                                     resultado_i.riesgo = "Alto"
+                                }
+                            }
+                        } else if (resultado_i.localidad == "Culiacán") {
+                            if (mes == "Enero" | mes == "Febrero" | mes == "Septiembre" | mes == "Octubre" |
+                                mes == "Noviembre" | mes == "Diciembre") {
+                                resultado_i.riesgo = "Bajo"
+                            } else {
+                                if (mes == "Marzo" | mes == "Abril" | mes == "Agosto") {
+                                    if (tmax >= 36) {
+                                        resultado_i.riesgo = "Bajo"
+                                    } else {
+                                        if (tmax < 36) {
+                                            if (tmax >= 33) {
+                                                if (tmax < 33) {
+                                                    resultado_i.riesgo = "Bajo"
+                                                } else {
+                                                    if (tmax >= 34) {
+                                                        if (precip >= 5.4) {
+                                                            resultado_i.riesgo = "Bajo"
+                                                        } else {
+                                                            resultado_i.riesgo = "Alto"
+                                                        }
+                                                    } else {
+                                                        resultado_i.riesgo = "Alto"
+                                                    }
+                                                }
+                                            } else {
+                                                if (precip >= 0.5) {
+                                                    resultado_i.riesgo = "Bajo"
+                                                } else {
+                                                    resultado_i.riesgo = "Alto"
+                                                }
+                                            }
+                                        } else {
+                                            resultado_i.riesgo = "Alto"
+                                        }
+                                    }
+                                } else {
                                     resultado_i.riesgo = "Alto"
                                 }
                             }
@@ -138,7 +176,6 @@ $(document).ready(function () {
                             };
 
                             function getColor(riesgo) {
-                                console.log(riesgo)
                                 if (riesgo == "Bajo") {
                                     return "#006400";
                                 } else if (riesgo == "Alto") {
