@@ -67,48 +67,37 @@ $(document).ready(function () {
                         if (resultado_i.localidad == "Campo Laguna") {
                             if (mes == "Enero" | mes == "Septiembre" | mes == "Octubre" |
                                 mes == "Noviembre" | mes == "Diciembre") {
-                                console.log("Sí soy, amá")
                                 resultado_i.riesgo = "Bajo"
                             } else {
                                 if (mes == "Febrero" | mes == "Marzo" | mes == "Abril" | mes == "Agosto") {
-                                    console.log("Aquí ando")
                                     if (tmax >= 36) {
-                                        console.log("Aquí ando")
-                                        console.log("Sí soy, amá")
                                         resultado_i.riesgo = "Bajo"
                                     } else {
-                                        console.log("Aquí ando")
                                         if (tmax < 32) {
                                             if (tmax >= 30) {
-                                                console.log("Sí soy, amá")
                                                 resultado_i.riesgo = "Bajo"
                                             } else {
-                                                console.log("Sí soy, amá")
                                                 resultado_i.riesgo = "Alto"
                                             }
                                         } else {
                                             if (tmax >= 33) {
                                                 if (tmax < 34) {
                                                     if (mes == "Abril") {
-                                                        console.log("Sí soy, amá")
                                                         resultado_i.riesgo = "Bajo"
                                                     } else {
-                                                        console.log("Sí soy, amá")
                                                         resultado_i.riesgo = "Alto"
                                                     }
                                                 } else {
-                                                    console.log("Sí soy, amá")
                                                     resultado_i.riesgo = "Alto"
                                                 }
                                             } else {
-                                                console.log("Sí soy, amá")
                                                 resultado_i.riesgo = "Alto"
                                             }
                                         }
                                     }
                                 }
                                 else {
-                                    console.log("Sí soy, amá")
+                                    resultado_i.riesgo = "Alto"
                                     resultado_i.riesgo = "Alto"
                                 }
                             }
