@@ -63,6 +63,57 @@ $(document).ready(function () {
                         //creamos una plantilla para cada feature
                         //los properties son especificas de cada fila.
                         //aunque hay manera de automatizar los properties que se agregan, eso queda fuera del alcance de la practica, sorry =(
+
+                        if (resultado_i.localidad == "Campo Laguna") {
+                            if (mes == "Enero" | mes == "Septiembre" | mes == "Octubre" |
+                                mes == "Noviembre" | mes == "Diciembre") {
+                                console.log("Sí soy, amá")
+                                resultado_i.riesgo = "Bajo"
+                            } else {
+                                if (mes == "Febrero" | mes == "Marzo" | mes == "Abril" | mes == "Agosto") {
+                                    console.log("Aquí ando")
+                                    if (tmax >= 36) {
+                                        console.log("Aquí ando")
+                                        console.log("Sí soy, amá")
+                                        resultado_i.riesgo = "Bajo"
+                                    } else {
+                                        console.log("Aquí ando")
+                                        if (tmax < 32) {
+                                            if (tmax >= 30) {
+                                                console.log("Sí soy, amá")
+                                                resultado_i.riesgo = "Bajo"
+                                            } else {
+                                                console.log("Sí soy, amá")
+                                                resultado_i.riesgo = "Alto"
+                                            }
+                                        } else {
+                                            if (tmax >= 33) {
+                                                if (tmax < 34) {
+                                                    if (mes == "Abril") {
+                                                        console.log("Sí soy, amá")
+                                                        resultado_i.riesgo = "Bajo"
+                                                    } else {
+                                                        console.log("Sí soy, amá")
+                                                        resultado_i.riesgo = "Alto"
+                                                    }
+                                                } else {
+                                                    console.log("Sí soy, amá")
+                                                    resultado_i.riesgo = "Alto"
+                                                }
+                                            } else {
+                                                console.log("Sí soy, amá")
+                                                resultado_i.riesgo = "Alto"
+                                            }
+                                        }
+                                    }
+                                }
+                                else {
+                                    console.log("Sí soy, amá")
+                                    resultado_i.riesgo = "Alto"
+                                }
+                            }
+                        }
+
                         let feature = {
                             "type": "Feature",
                             "id": resultado_i.id,
@@ -74,7 +125,8 @@ $(document).ready(function () {
                                 "localidad": resultado_i.localidad,
                                 "ubicacion": resultado_i.ubicacion,
                                 "longitud": resultado_i.longitud,
-                                "latitud": resultado_i.latitud
+                                "latitud": resultado_i.latitud,
+                                "riesgo": resultado_i.riesgo
 
                             }
                         };
@@ -89,10 +141,20 @@ $(document).ready(function () {
 
                             var geojsonMarkerOptions = {
                                 radius: 6,
-                                color: "#FF0000",
+                                fillColor: getColor(feature.properties.riesgo),
+                                color: "#000",
                                 weight: 1,
                                 opacity: 1,
                                 fillOpacity: 1.0
+                            };
+
+                            function getColor(riesgo) {
+                                console.log(riesgo)
+                                if (riesgo == "Bajo") {
+                                    return "#006400";
+                                } else if (riesgo == "Alto") {
+                                    return "#FF0000";
+                                }
                             };
 
                             var marker = L.circleMarker(latlng, geojsonMarkerOptions);
