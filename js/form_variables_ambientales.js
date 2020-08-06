@@ -139,6 +139,39 @@ $(document).ready(function () {
                                     resultado_i.riesgo = "Alto"
                                 }
                             }
+                        } else if (resultado_i.localidad == "Tamarindo") {
+                            if (mes == "Enero" | mes == "Septiembre" | mes == "Octubre" |
+                            mes == "Noviembre" | mes == "Diciembre") {
+                                if (mes == "Septiembre" | mes == "Octubre" |
+                                mes == "Noviembre" | mes == "Diciembre") {
+                                    resultado_i.riesgo = "Bajo"
+                                } else {
+                                    if (tmax < 30) {
+                                        console.log("Aquí")
+                                        resultado_i.riesgo = "Bajo"
+                                    } else {
+                                        resultado_i.riesgo = "Alto"
+                                    }
+                                }
+                            } else {
+                                if (tmin < 12) {
+                                    resultado_i.riesgo = "Bajo"
+                                } else {
+                                    if (mes == "Febrero" | mes == "Marzo" | mes == "Agosto") {
+                                        if (precip >= 0.75) {
+                                            if (precip < 1.7) {
+                                                resultado_i.riesgo = "Bajo"
+                                            } else {
+                                                resultado_i.riesgo = "Alto"
+                                            }
+                                        } else {
+                                            resultado_i.riesgo = "Alto"
+                                        }
+                                    } else {
+                                        resultado_i.riesgo = "Alto"
+                                    }
+                                }
+                            }
                         }
 
                         let feature = {
