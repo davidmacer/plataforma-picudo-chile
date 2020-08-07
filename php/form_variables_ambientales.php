@@ -12,14 +12,15 @@ if (!$connection) {
   exit;
 }
 
-$mes = $tmin = "";
+$mes = $tmin = $tmax = $precip = $riesgo = "";
 $mes = $_POST['mes'];
 $tmin = $_POST['tmin'];
 $tmax = $_POST['tmax'];
 $precip = $_POST['precip'];
 
 // Genera la consulta a la base de datos
-$query = "SELECT st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id FROM tabla_trampas;";
+$query = "SELECT st_asgeojson(geom), no_trampa, localidad, ubicacion, longitud, latitud, trampa_id FROM tabla_trampas
+WHERE localidad = 'Campo Laguna' OR localidad = 'Culiacán' OR localidad = 'Tamarindo';";
 
 $result = pg_query($query);
 
@@ -30,9 +31,9 @@ if (!$result) {
 $data = array();
 // Itera por los renglones
 while ($row = @pg_fetch_assoc($result)){ 
-  $renglon = array("no_trampa"=>$row['no_trampa'], "localidad"=>$row['localidad'], 
-  "ubicacion"=>$row['ubicacion'], "longitud"=>$row['longitud'], "latitud"=>$row['latitud'], 
-  "mes"=>$mes, "tmin"=>$tmin, "tmax"=>$tmax, "precip"=>$precip);
+  $renglon = array("st_asgeojson"=>$row['st_asgeojson'], "no_trampa"=>$row['no_trampa'], "localidad"=>$row['localidad'], 
+  "ubicacion"=>$row['ubicacion'], "longitud"=>$row['longitud'], "latitud"=>$row['latitud'], "trampa_id"=>$row['trampa_id'],  
+  "mes"=>$mes, "tmin"=>$tmin, "tmax"=>$tmax, "precip"=>$precip, "riesgo"=>$riesgo);
   array_push($data, $renglon);
 }
     //returns data as JSON format
