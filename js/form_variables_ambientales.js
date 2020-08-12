@@ -39,10 +39,7 @@ $(document).ready(function () {
                         contenido_html = "Zona: " + response[i].localidad + "<br/>";
                         contenido_html += "Ubicación: " + response[i].ubicacion + "<br/>";
                         contenido_html += "No de trampa: " + response[i].no_trampa + "<br/>";
-                        contenido_html += "Mes: " + response[i].mes + "<br/>";
-                        contenido_html += "Temperatura mínima: " + response[i].tmin + "<br/>";
-                        contenido_html += "Temperatura máxima: " + response[i].tmax + "<br/>";
-                        contenido_html += "Precipitación: " + response[i].precip + "<br/>";
+                        contenido_html += "Cantiad de capturas: " + response[i].riesgo + "<br/>";
                         contenido_html += "<hr/>";
                         $('#contenido').append(contenido_html);
                     } //fin del for
@@ -60,10 +57,8 @@ $(document).ready(function () {
                     };
 
                     response.forEach(function (resultado_i) {
-                        //creamos una plantilla para cada feature
-                        //los properties son especificas de cada fila.
-                        //aunque hay manera de automatizar los properties que se agregan, eso queda fuera del alcance de la practica, sorry =(
 
+                        // Árbol de decisión para Campo Laguna
                         if (resultado_i.localidad == "Campo Laguna") {
                             if (mes == "Enero" | mes == "Septiembre" | mes == "Octubre" |
                                 mes == "Noviembre" | mes == "Diciembre") {
@@ -100,6 +95,7 @@ $(document).ready(function () {
                                     resultado_i.riesgo = "Alto"
                                 }
                             }
+                        // Árbol de decisión para Culiacán
                         } else if (resultado_i.localidad == "Culiacán") {
                             if (mes == "Enero" | mes == "Febrero" | mes == "Septiembre" | mes == "Octubre" |
                                 mes == "Noviembre" | mes == "Diciembre") {
@@ -139,6 +135,7 @@ $(document).ready(function () {
                                     resultado_i.riesgo = "Alto"
                                 }
                             }
+                        // Árbol de decisión para Tamarindo
                         } else if (resultado_i.localidad == "Tamarindo") {
                             if (mes == "Enero" | mes == "Septiembre" | mes == "Octubre" |
                             mes == "Noviembre" | mes == "Diciembre") {
@@ -222,7 +219,8 @@ $(document).ready(function () {
                                 "Longitud: " + feature.properties.longitud + '<br/>' +
                                 "Latitud: " + feature.properties.latitud + '<br/>' +
                                 "No de trampa: " + feature.properties.no_trampa + '<br/>' +
-                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                                "Trampa ID: " + feature.properties.trampa_id + '<br/>' + 
+                                "Riesgo: " + feature.properties.riesgo + '<br/>');
                             return marker;
                         }
                     }).addTo(myMap);
