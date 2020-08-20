@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
-<meta charset="UTF-8">
+<html lang="en">
 
 <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>picudo del chile en Sinaloa</title>
     <!-- Go to https://code.jquery.com/ for more details -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -19,65 +23,185 @@
         crossorigin=""></script>
     <!-- Mis archivos -->
     <script src="js/form_variables_ambientales.js"></script>
+    
+  <!-- Custom fonts for this template-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+  <!-- Custom styles for this template-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.0.7/css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
-<body>
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center bg-white" target="_blank" href=""
-        style="background-color:#0b231e!important">
-        <div class="sidebar-brand-icon">
-            <img src="./img/logos/sanidad_vegetal_culiacan.png" width="70px" />
-            <img src="./img/logos/sader.png" width="120px" />
-        </div>
-    </a>
-    <table>
-        <tr>
-            <td>
-                <div id="mapid" style="width: 1000px; height: 600px;"></div>
-            </td>
-            <td>
-                <div id="formulario">
-                    <h3>Variables ambientales</h3>
+<body id="page-top">
 
-                    <form action="form_variables_ambientales.php" method="post">
-                        <select name="mes" id="mes">
-                            <option value="ene">Enero</option>
-                            <option value="feb">Febrero</option>
-                            <option value="mar">Marzo</option>
-                            <option value="abr">Abril</option>
-                            <option value="may">Mayo</option>
-                            <option value="jun">Junio</option>
-                            <option value="jul">Julio</option>
-                            <option value="ago">Agosto</option>
-                            <option value="sep">Septiembre</option>
-                            <option value="oct">Octubre</option>
-                            <option value="nov">Noviembre</option>
-                            <option value="dic">Diciembre</option>
-                        </select>
-                        <p>Temperatura mínima: <input type="number" id="tmin" name="tmin" value="12"></p>
-                        <p>Temperatura máxima: <input type="number" id="tmax" name="tmax" value="28"></p>
-                        <p>Precipitación: <input type="number" id="precip" name="precip" value="0"></p>
-                        <input id="submit" type="submit" value="Submit"> <input type="reset">
-                    </form>
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mt-3 mb-0 text-gray-800">Plataforma de apoyo a la toma de decisiones: picudo del chile en Sinaloa</h1>
+            <a href="#" class="d-none d-sm-inline-block shadow-sm mt-3 bg-white p-2">
+                        <img src="./img/logos/sanidad_vegetal_culiacan.png" width="40px" />
+			            <img src="./img/logos/sader.png" width="90px" />  
+            </a>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Body -->
+                <div class="card-body">
+	                <div id="mapid" style="width: 100%; height: 75vh;"></div>
                 </div>
-            </td>
-        </tr>
-    </table>
+              </div>
+            </div>
 
-    <div id="controls">
-        <table cellspacing="5">
-            <tr>
-                <td><button id="mostrar_campo_laguna">Campo Laguna</button></td>
-                <td><button id="mostrar_culiacan">Culiacán</button></td>
-                <td><button id="mostrar_nav_norte">Navolato Norte</button></td>
-                <td><button id="mostrar_tamarindo">Tamarindo</button></td>
-                <td><button id="mostrar_trampas">Mostrar todas las trampas</button></td>
-                <td><button id="quitar_trampas">Quitar todas las trampas</button></td>
-            </tr>
-        </table>
+
+            <div class="col-xl-4 col-lg-5 text-xs">
+              <div class="card shadow mb-4">
+                <!-- Card Body -->
+                <div class="card-body p-1">
+                	<center>
+		                <h6 class="mt-1"><b>Variables ambientales</b></h6>
+		                <hr class="m-1">
+	                </center>                	
+
+		            <div class="mb-0" id="formulario">
+
+		                <form  action="form_variables_ambientales.php" method="post">
+		                
+										<div class="form-group m-1">
+											<label class="mb-0" for="mes">Mes:</label>
+												<select  class="form-control form-control-user" name="mes" id="mes">
+												    <option value="ene">Enero</option>
+												    <option value="feb">Febrero</option>
+												    <option value="mar">Marzo</option>
+												    <option value="abr">Abril</option>
+												    <option value="may">Mayo</option>
+												    <option value="jun">Junio</option>
+												    <option value="jul">Julio</option>
+												    <option value="ago">Agosto</option>
+												    <option value="sep">Septiembre</option>
+												    <option value="oct">Octubre</option>
+												    <option value="nov">Noviembre</option>
+												    <option value="dic">Diciembre</option>
+												</select>
+										</div>
+											
+										<div class="form-group m-1">
+											<label class="mb-0" for="tmax">Temperatura máxima:</label>
+											<input  class="form-control form-control-user" type="number" id="tmax" name="tmax" value="28">
+										</div>
+											
+										<div class="form-group m-1">
+											<label class="mb-0" for="tmin">Temperatura mínima:</label>
+											<input  class="form-control form-control-user" type="number" id="tmin" name="tmin" value="12">
+										</div>											
+											
+										<div class="form-group m-1">
+											<label class="mb-0" for="precip">Precipitación:</label>
+											<input  class="form-control form-control-user" type="number" id="precip" name="precip" value="0">
+										</div>																						
+										
+										<div class="form-group m-1">
+											 <div class="row">										
+												 <div class="col-6">
+									                <input  class="form-control form-control-user" id="submit" type="submit" value="Submit">
+									             </div>
+												 <div class="col-6">
+									                <input  class="form-control form-control-user"  type="reset">
+									             </div>							                    
+								             </div>
+										</div>																	                    
+										
+		                </form>
+		            </div>
+		                            
+                </div>
+              </div>
+              
+              <div class="card shadow mb-4 text-xs">
+                <!-- Card Body -->
+                <div class="card-body p-1">
+
+                	<center>
+                	
+		                <h6 class="mt-1"><b>Opciones de mapa</b></h6>
+		                <hr class="m-1">
+
+			            <div class="form-group m-1 text-center">
+								<button class="form-control form-control-user m-1" id="mostrar_campo_laguna">Campo Laguna</button>
+								<button class="form-control form-control-user m-1" id="mostrar_culiacan">Culiacán</button>
+								<button class="form-control form-control-user m-1" id="mostrar_nav_norte">Navolato Norte</button>
+								<button class="form-control form-control-user m-1" id="mostrar_tamarindo">Tamarindo</button>
+						</div>
+						
+			            <div class="form-group m-1 text-center">
+							 <div class="row text-center">    
+								<button class="form-control form-control-user m-2" id="mostrar_trampas" style="width:45%;">Mostrar todo</button>
+								<button class="form-control form-control-user m-2" id="quitar_trampas" style="width:45%;">Quitar todo</button>
+							</div>
+						</div>						
+						
+	                </center> 						
+		                            
+                </div>
+              </div>
+                            
+            </div>
+            
+            
+          </div>
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto text-center">     
+          <div class="copyright text-center my-auto">
+            <span>Equipo Maravilla <img src="https://image.flaticon.com/icons/png/512/599/599505.png" style="width:20px;" /></span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
     </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
 
     <script>
 
@@ -288,7 +412,8 @@
 
     </script>
     <!-- Fin Consulta 1 -->
-
+    
+  
 </body>
 
 </html>
