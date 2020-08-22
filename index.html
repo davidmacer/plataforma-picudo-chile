@@ -3,9 +3,9 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>picudo del chile en Sinaloa</title>
     <!-- Go to https://code.jquery.com/ for more details -->
@@ -23,397 +23,262 @@
         crossorigin=""></script>
     <!-- Mis archivos -->
     <script src="js/form_variables_ambientales.js"></script>
-    
-  <!-- Custom fonts for this template-->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- <script src="js/ajax.js"></script> -->
 
-  <!-- Custom styles for this template-->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.0.7/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.0.7/css/sb-admin-2.css"
+        rel="stylesheet">
 
 </head>
 
 <body id="page-top">
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-      <!-- Main Content -->
-      <div id="content">
+            <!-- Main Content -->
+            <div id="content">
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mt-3 mb-0 text-gray-800">Plataforma de apoyo a la toma de decisiones: picudo del chile en Sinaloa</h1>
-            <a href="#" class="d-none d-sm-inline-block shadow-sm mt-3 bg-white p-2">
-                        <img src="./img/logos/sanidad_vegetal_culiacan.png" width="40px" />
-			            <img src="./img/logos/sader.png" width="90px" />  
-            </a>
-          </div>
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mt-3 mb-0 text-gray-800">Plataforma de apoyo a la toma de decisiones: picudo del
+                            chile en Sinaloa</h1>
+                        <a href="#" class="d-none d-sm-inline-block shadow-sm mt-3 bg-white p-2">
+                            <img src="./img/logos/sanidad_vegetal_culiacan.png" width="40px" />
+                            <img src="./img/logos/sader.png" width="90px" />
+                        </a>
+                    </div>
 
-          <!-- Content Row -->
-          <div class="row">
+                    <!-- Content Row -->
+                    <div class="row">
 
-          </div>
+                    </div>
 
-          <!-- Content Row -->
+                    <!-- Content Row -->
 
-          <div class="row">
+                    <div class="row">
 
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Body -->
-                <div class="card-body">
-	                <div id="mapid" style="width: 100%; height: 75vh;"></div>
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div id="mapid" style="width: 100%; height: 75vh;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-4 col-lg-5 text-xs">
+                            <div class="card shadow mb-4">
+                                <!-- Card Body -->
+                                <div class="card-body p-1">
+                                    <center>
+                                        <h6 class="mt-1"><b>Variables ambientales</b></h6>
+                                        <hr class="m-1">
+                                    </center>
+
+                                    <div class="mb-0" id="formulario">
+
+                                        <form action="form_variables_ambientales.php" method="post">
+
+                                            <div class="form-group m-1">
+                                                <label class="mb-0" for="mes">Mes:</label>
+                                                <select class="form-control form-control-user" name="mes" id="mes">
+                                                    <option value="ene">Enero</option>
+                                                    <option value="feb">Febrero</option>
+                                                    <option value="mar">Marzo</option>
+                                                    <option value="abr">Abril</option>
+                                                    <option value="may">Mayo</option>
+                                                    <option value="jun">Junio</option>
+                                                    <option value="jul">Julio</option>
+                                                    <option value="ago">Agosto</option>
+                                                    <option value="sep">Septiembre</option>
+                                                    <option value="oct">Octubre</option>
+                                                    <option value="nov">Noviembre</option>
+                                                    <option value="dic">Diciembre</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group m-1">
+                                                <label class="mb-0" for="tmax">Temperatura máxima:</label>
+                                                <input class="form-control form-control-user" type="number" id="tmax"
+                                                    name="tmax" value="28">
+                                            </div>
+
+                                            <div class="form-group m-1">
+                                                <label class="mb-0" for="tmin">Temperatura mínima:</label>
+                                                <input class="form-control form-control-user" type="number" id="tmin"
+                                                    name="tmin" value="12">
+                                            </div>
+
+                                            <div class="form-group m-1">
+                                                <label class="mb-0" for="precip">Precipitación:</label>
+                                                <input class="form-control form-control-user" type="number" id="precip"
+                                                    name="precip" value="0">
+                                            </div>
+
+                                            <div class="form-group m-1">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input class="form-control form-control-user" id="submit"
+                                                            type="submit" value="Submit">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input class="form-control form-control-user" type="reset">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card shadow mb-4 text-xs">
+                                <!-- Card Body -->
+                                <div class="card-body p-1">
+
+                                    <center>
+
+                                        <h6 class="mt-1"><b>Opciones de mapa</b></h6>
+                                        <hr class="m-1">
+
+                                        <div class="form-group m-1 text-center">
+                                            <div class="row text-center">
+                                                <button class="form-control form-control-user m-2" id="mostrar_trampas"
+                                                    style="width:45%;">Mostrar todo</button>
+                                                <button class="form-control form-control-user m-2" id="quitar_trampas"
+                                                    style="width:45%;">Quitar todo</button>
+                                            </div>
+                                        </div>
+
+                                    </center>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
                 </div>
-              </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto text-center">
+                        <div class="copyright text-center my-auto">
+                            <span>Equipo Maravilla <img src="https://image.flaticon.com/icons/png/512/599/599505.png"
+                                    style="width:20px;" /></span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
             </div>
+            <!-- End of Content Wrapper -->
 
-
-            <div class="col-xl-4 col-lg-5 text-xs">
-              <div class="card shadow mb-4">
-                <!-- Card Body -->
-                <div class="card-body p-1">
-                	<center>
-		                <h6 class="mt-1"><b>Variables ambientales</b></h6>
-		                <hr class="m-1">
-	                </center>                	
-
-		            <div class="mb-0" id="formulario">
-
-		                <form  action="form_variables_ambientales.php" method="post">
-		                
-										<div class="form-group m-1">
-											<label class="mb-0" for="mes">Mes:</label>
-												<select  class="form-control form-control-user" name="mes" id="mes">
-												    <option value="ene">Enero</option>
-												    <option value="feb">Febrero</option>
-												    <option value="mar">Marzo</option>
-												    <option value="abr">Abril</option>
-												    <option value="may">Mayo</option>
-												    <option value="jun">Junio</option>
-												    <option value="jul">Julio</option>
-												    <option value="ago">Agosto</option>
-												    <option value="sep">Septiembre</option>
-												    <option value="oct">Octubre</option>
-												    <option value="nov">Noviembre</option>
-												    <option value="dic">Diciembre</option>
-												</select>
-										</div>
-											
-										<div class="form-group m-1">
-											<label class="mb-0" for="tmax">Temperatura máxima:</label>
-											<input  class="form-control form-control-user" type="number" id="tmax" name="tmax" value="28">
-										</div>
-											
-										<div class="form-group m-1">
-											<label class="mb-0" for="tmin">Temperatura mínima:</label>
-											<input  class="form-control form-control-user" type="number" id="tmin" name="tmin" value="12">
-										</div>											
-											
-										<div class="form-group m-1">
-											<label class="mb-0" for="precip">Precipitación:</label>
-											<input  class="form-control form-control-user" type="number" id="precip" name="precip" value="0">
-										</div>																						
-										
-										<div class="form-group m-1">
-											 <div class="row">										
-												 <div class="col-6">
-									                <input  class="form-control form-control-user" id="submit" type="submit" value="Submit">
-									             </div>
-												 <div class="col-6">
-									                <input  class="form-control form-control-user"  type="reset">
-									             </div>							                    
-								             </div>
-										</div>																	                    
-										
-		                </form>
-		            </div>
-		                            
-                </div>
-              </div>
-              
-              <div class="card shadow mb-4 text-xs">
-                <!-- Card Body -->
-                <div class="card-body p-1">
-
-                	<center>
-                	
-		                <h6 class="mt-1"><b>Opciones de mapa</b></h6>
-		                <hr class="m-1">
-
-			            <div class="form-group m-1 text-center">
-								<button class="form-control form-control-user m-1" id="mostrar_campo_laguna">Campo Laguna</button>
-								<button class="form-control form-control-user m-1" id="mostrar_culiacan">Culiacán</button>
-								<button class="form-control form-control-user m-1" id="mostrar_nav_norte">Navolato Norte</button>
-								<button class="form-control form-control-user m-1" id="mostrar_tamarindo">Tamarindo</button>
-						</div>
-						
-			            <div class="form-group m-1 text-center">
-							 <div class="row text-center">    
-								<button class="form-control form-control-user m-2" id="mostrar_trampas" style="width:45%;">Mostrar todo</button>
-								<button class="form-control form-control-user m-2" id="quitar_trampas" style="width:45%;">Quitar todo</button>
-							</div>
-						</div>						
-						
-	                </center> 						
-		                            
-                </div>
-              </div>
-                            
-            </div>
-            
-            
-          </div>
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto text-center">     
-          <div class="copyright text-center my-auto">
-            <span>Equipo Maravilla <img src="https://image.flaticon.com/icons/png/512/599/599505.png" style="width:20px;" /></span>
-          </div>
         </div>
-      </footer>
-      <!-- End of Footer -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
 
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
 
-    <script>
+        <script>
 
-        var myMap = L.map('mapid').setView([24.66305, -107.6229], 9);
+            var myMap = L.map('mapid').setView([24.66305, -107.6229], 9);
 
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            maxZoom: 18,
-            attribution: 'Map data & copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox.streets'
-        }).addTo(myMap);
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 18,
+                attribution: 'Map data & copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox.streets'
+            }).addTo(myMap);
 
-        // Muestra trampas de Campo Laguna
-        document.getElementById("mostrar_campo_laguna").addEventListener("click", muestraCampoLaguna);
+            // Muestra todas las trampas
+            document.getElementById("mostrar_trampas").addEventListener("click", muestraTrampas);
 
-        function muestraCampoLaguna() {
+            function muestraTrampas() {
+                var todas_trampas = true
 
-            $.getJSON(
-                'http://localhost:8000/mostrarCampoLaguna',
+                $.getJSON(
+                    'http://localhost:8000/mostrarTrampas',
 
-                function (json) {
+                    function (json) {
 
-                    L.geoJson(json, {
-                        pointToLayer: function (feature, latlng) {
+                        L.geoJson(json, {
+                            pointToLayer: function (feature, latlng) {
 
-                            var geojsonMarkerOptions = {
-                                radius: 6,
-                                color: "#004C99",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1.0
-                            };
+                                var geojsonMarkerOptions = {
+                                    radius: 6,
+                                    fillColor: getColor(feature.properties.trampa_id),
+                                    color: "#000",
+                                    weight: 1,
+                                    opacity: 1,
+                                    fillOpacity: 1.0
+                                };
 
-                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
-                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
-                                "Longitud: " + feature.properties.longitud + '<br/>' +
-                                "Latitud: " + feature.properties.latitud + '<br/>' +
-                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
-                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
-                            return marker;
-                        }
-                    }).addTo(myMap);
+                                function getColor(d) {
+                                    if (d <= 20)
+                                        return "#000";
+                                    if (d > 20 & d <= 40)
+                                        return "#FF5733";
+                                    if (d > 40 & d <= 60)
+                                        return "#81FF33";
+                                    if (d > 60)
+                                        return "#3357FF";
+                                };
 
-                });
-        };
+                                var marker = L.circleMarker(latlng, geojsonMarkerOptions);
+                                marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
+                                    "Ubicación: " + feature.properties.ubicacion + '<br/>' +
+                                    "Longitud: " + feature.properties.longitud + '<br/>' +
+                                    "Latitud: " + feature.properties.latitud + '<br/>' +
+                                    "No de trampa: " + feature.properties.no_trampa + '<br/>' +
+                                    "Trampa ID: " + feature.properties.trampa_id + '<br/>');
+                                return marker;
+                            }
+                        }).addTo(myMap);
 
-        // Muestra trampas de Culiacán
-        document.getElementById("mostrar_culiacan").addEventListener("click", muestraCuliacan);
+                    });
+            }
 
-        function muestraCuliacan() {
+            // Muestra trampas de Campo Laguna
+            document.getElementById("quitar_trampas").addEventListener("click", quita_trampas);
 
-            $.getJSON(
-                'http://localhost:8000/mostrarCuliacan',
+            function quita_trampas() {
+                console.log(todas_trampas)
+            };
 
-                function (json) {
+        </script>
+        <!-- Fin Consulta 1 -->
 
-                    L.geoJson(json, {
-                        pointToLayer: function (feature, latlng) {
 
-                            var geojsonMarkerOptions = {
-                                radius: 6,
-                                color: "#004C99",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1.0
-                            };
-
-                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
-                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
-                                "Longitud: " + feature.properties.longitud + '<br/>' +
-                                "Latitud: " + feature.properties.latitud + '<br/>' +
-                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
-                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
-                            return marker;
-                        }
-                    }).addTo(myMap);
-
-                });
-        };
-
-        // Muestra trampas de Navolato Norte
-        document.getElementById("mostrar_nav_norte").addEventListener("click", muestraNavNorte);
-
-        function muestraNavNorte() {
-
-            $.getJSON(
-                'http://localhost:8000/mostrarNavNorte',
-
-                function (json) {
-
-                    L.geoJson(json, {
-                        pointToLayer: function (feature, latlng) {
-
-                            var geojsonMarkerOptions = {
-                                radius: 6,
-                                color: "#004C99",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1.0
-                            };
-
-                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
-                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
-                                "Longitud: " + feature.properties.longitud + '<br/>' +
-                                "Latitud: " + feature.properties.latitud + '<br/>' +
-                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
-                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
-                            return marker;
-                        }
-                    }).addTo(myMap);
-
-                });
-        };
-
-        // Muestra trampas de Tamarindo
-        document.getElementById("mostrar_tamarindo").addEventListener("click", muestraTamarindo);
-
-        function muestraTamarindo() {
-
-            $.getJSON(
-                'http://localhost:8000/mostrarTamarindo',
-
-                function (json) {
-
-                    L.geoJson(json, {
-                        pointToLayer: function (feature, latlng) {
-
-                            var geojsonMarkerOptions = {
-                                radius: 6,
-                                color: "#004C99",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1.0
-                            };
-
-                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
-                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
-                                "Longitud: " + feature.properties.longitud + '<br/>' +
-                                "Latitud: " + feature.properties.latitud + '<br/>' +
-                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
-                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
-                            return marker;
-                        }
-                    }).addTo(myMap);
-
-                });
-        };
-
-        // Muestra todas las trampas
-        document.getElementById("mostrar_trampas").addEventListener("click", muestraTrampas);
-
-        function muestraTrampas() {
-            var todas_trampas = true
-
-            $.getJSON(
-                'http://localhost:8000/mostrarTrampas',
-
-                function (json) {
-
-                    L.geoJson(json, {
-                        pointToLayer: function (feature, latlng) {
-
-                            var geojsonMarkerOptions = {
-                                radius: 6,
-                                fillColor: getColor(feature.properties.trampa_id),
-                                color: "#000",
-                                weight: 1,
-                                opacity: 1,
-                                fillOpacity: 1.0
-                            };
-
-                            function getColor(d) {
-                                if (d <= 20)
-                                    return "#000";
-                                if (d > 20 & d <= 40)
-                                    return "#FF5733";
-                                if (d > 40 & d <= 60)
-                                    return "#81FF33";
-                                if (d > 60)
-                                    return "#3357FF";
-                            };
-
-                            var marker = L.circleMarker(latlng, geojsonMarkerOptions);
-                            marker.bindPopup("Localidad: " + feature.properties.localidad + '<br/>' +
-                                "Ubicación: " + feature.properties.ubicacion + '<br/>' +
-                                "Longitud: " + feature.properties.longitud + '<br/>' +
-                                "Latitud: " + feature.properties.latitud + '<br/>' +
-                                "No de trampa: " + feature.properties.no_trampa + '<br/>' +
-                                "Trampa ID: " + feature.properties.trampa_id + '<br/>');
-                            return marker;
-                        }
-                    }).addTo(myMap);
-
-                });
-        }
-
-        // Muestra trampas de Campo Laguna
-        document.getElementById("quitar_trampas").addEventListener("click", quita_trampas);
-
-        function quita_trampas() {
-            console.log(todas_trampas)
-        };
-
-    </script>
-    <!-- Fin Consulta 1 -->
-    
-  
 </body>
 
 </html>
